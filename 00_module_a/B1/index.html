@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>B1 資料夾壓縮</title>
+<!-- 引入 JSZip 提供純前端打包功能 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+<h2>上傳資料夾 (純前端 JavaScript 壓縮)</h2>
+<p>選擇一個資料夾，點擊壓縮後會自動打包內部檔案並下載成 zip，空資料夾不包含。</p>
+<input type="file" id="folderPicker" webkitdirectory directory multiple>
+<button onclick="compressFolder()">壓縮與下載</button>
+<br><br><a href="../index.html">返回</a>
+
+<script>
+async function compressFolder() {
+    const files = document.getElementById('folderPicker').files;
+    if (files.length === 0) {
+        alert("請選擇非空資料夾！");
+        return;
+    }
+
+    const zip = new JSZip();
+    // 取得資料夾原始名稱
+    const folderName = files[0].webkitRelativePath.split('/')[0] || "archive";
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        // 過濾掉全空的檔案 (或只保留有實質內容的文件以避開上傳的空資料夾結構)
+        if (file.webkitRelativePath) {
+            zip.file(file.webkitRelativePath, file);
+        }
+    }
+
+    const content = await zip.generateAsync({type:"blob"});
+    
+    // 建立下載結點
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(content);
+    link.download = folderName + ".zip";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+</body>
+</html>

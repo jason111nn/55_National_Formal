@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>A3 CSS 長條圖</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; background: #fff;}
+        .chart {
+            width: 200px; height: 200px;
+            border: 3px solid #333;
+            display: flex; align-items: flex-end; justify-content: space-around;
+            padding: 0 10px; cursor: pointer;
+        }
+        .bar {
+            width: 40px; height: 0;
+            transition: height 0.5s ease-out;
+        }
+        .bar:nth-child(1) { background: red; }
+        .bar:nth-child(2) { background: yellow; }
+        .bar:nth-child(3) { background: blue; }
+
+        /* 滑鼠移出 (unhover): 由左到右消失。表示第一條最先消失(delay: 0)，第二條次之，第三條最後(delay: 0.4s) */
+        .bar:nth-child(1) { transition-delay: 0s; }
+        .bar:nth-child(2) { transition-delay: 0.2s; }
+        .bar:nth-child(3) { transition-delay: 0.4s; }
+
+        /* 滑鼠懸停 (hover): 由左到右顯示。表示第一條最先顯示(delay: 0)，第二條次之，第三條最後 */
+        .chart:hover .bar:nth-child(1) { height: 120px; transition-delay: 0s; }
+        .chart:hover .bar:nth-child(2) { height: 160px; transition-delay: 0.2s; }
+        .chart:hover .bar:nth-child(3) { height: 100px; transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="chart">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的餐盤 - 健康飲食網站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <!-- 1. 頁首(導覽列) -->
+    <header id="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="國健署健康餐盤 Logo" onerror="this.src=''; this.alt='我的餐盤 Logo';">
+        </div>
+        <nav>
+            <a href="#cta">首頁</a>
+            <a href="#plate-interactive">互動餐盤</a>
+            <a href="#promo-video">推廣影片</a>
+            <a href="#downloads">手冊下載</a>
+            <a href="#meals-tabs">三餐推薦</a>
+            <a href="#food-cards">六大分類</a>
+            <a href="#contact">健康諮詢</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. 行動呼籲 (CTA) -->
+        <section id="cta" class="responsive-bg">
+            <div class="cta-content">
+                <h1 class="slogan">健康飲食，從我的餐盤開始！這是一句口號。</h1>
+                <button class="btn-start" aria-label="開始行動按鈕">開始行動</button>
+            </div>
+        </section>
+
+        <!-- 3. 互動健康餐盤 -->
+        <section id="plate-interactive">
+            <h2>互動健康餐盤</h2>
+            <!-- 電腦版 -->
+            <div class="plate-desktop-layout">
+                <div class="icons-left">
+                    <button class="food-icon" data-target="fruit" aria-label="水果類">🍎 水果類</button>
+                    <button class="food-icon" data-target="veg" aria-label="蔬菜類">🥬 蔬菜類</button>
+                    <button class="food-icon" data-target="grain" aria-label="全穀雜糧類">🍚 全穀雜糧</button>
+                    <button class="food-icon" data-target="protein" aria-label="豆魚蛋肉">🥩 豆魚蛋肉</button>
+                    <button class="food-icon" data-target="dairy" aria-label="乳品類">🥛 乳品類</button>
+                    <button class="food-icon" data-target="fat" aria-label="油脂與堅果">🥜 油脂與堅果</button>
+                </div>
+                <!-- 盤子區塊 -->
+                <div class="plate-container" id="plate-container" aria-labelledby="plate-title">
+                    <h3 id="plate-title" class="sr-only" aria-hidden="true">餐盤示意圖</h3>
+                    <div class="plate-base">
+                        <div class="plate-slice slice-fruit">🍎</div>
+                        <div class="plate-slice slice-veg">🥬</div>
+                        <div class="plate-slice slice-grain">🍚</div>
+                        <div class="plate-slice slice-protein">🥩</div>
+                        <div class="plate-slice slice-dairy">🥛</div>
+                        <div class="plate-slice slice-fat">🥜</div>
+                        
+                        <!-- 彈出細節面板 -->
+                        <div class="plate-overlay" id="plate-overlay" aria-hidden="true" style="display:none;">
+                            <button class="close-overlay" aria-label="關閉內容">X</button>
+                            <div class="overlay-content">
+                                <span class="o-icon"></span>
+                                <h4 class="o-title"></h4>
+                                <p class="o-slogan"></p>
+                                <p class="o-portion"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 手機版 (CSS中會依照寬度調整 display) -->
+            <div class="plate-mobile-layout">
+                <!-- 共用餐盤樣式，以JS掛載點擊事件展開滿版細節 -->
+            </div>
+        </section>
+
+        <!-- 4. 推廣影片 -->
+        <section id="promo-video">
+            <h2>推廣影片</h2>
+            <!-- <source src="..." type="video/mp4"> -->
+            <video id="autoVideo" muted controls style="width: 100%; max-width: 800px; display:block; margin: 0 auto; background:#000;">
+            </video>
+        </section>
+
+        <!-- 5. 手冊下載 -->
+        <section id="downloads">
+            <h2>手冊下載</h2>
+            <ul>
+                <li><a href="#" download="國民飲食指標手冊.pdf">國民飲食指標手冊</a></li>
+                <li><a href="#" download="我的餐盤手冊.pdf">我的餐盤手冊</a></li>
+                <li><a href="#" download="每日飲食指南手冊.pdf">每日飲食指南手冊</a></li>
+            </ul>
+            <button id="downloadAllBtn" class="btn-dl">下載全部 (ZIP)</button>
+        </section>
+
+        <!-- 6. 三餐推薦 (巢狀 Tabs) -->
+        <section id="meals-tabs">
+            <h2>三餐推薦</h2>
+            <div class="tab-container">
+                <div class="tab-list" role="tablist">
+                    <button role="tab" aria-selected="true" class="tab-btn active" data-tab="tab-breakfast">早餐</button>
+                    <button role="tab" aria-selected="false" class="tab-btn" data-tab="tab-lunch">午餐</button>
+                    <button role="tab" aria-selected="false" class="tab-btn" data-tab="tab-dinner">晚餐</button>
+                </div>
+                <div class="tab-panels">
+                    <div role="tabpanel" class="tab-panel active" id="tab-breakfast">
+                        <!-- 子層 Tab -->
+                        <div class="sub-tab-list" role="tablist">
+                            <button role="tab" aria-selected="true" class="sub-tab-btn active" data-sub="b1">建議一</button>
+                            <button role="tab" aria-selected="false" class="sub-tab-btn" data-sub="b2">建議二</button>
+                        </div>
+                        <div class="sub-panels">
+                            <div role="tabpanel" class="sub-panel active" id="b1">全麥吐司 + 無糖豆漿 + 蘋果</div>
+                            <div role="tabpanel" class="sub-panel" id="b2" style="display:none;">燕麥片 + 鮮奶 + 堅果</div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-panel" id="tab-lunch" style="display:none;">午餐推薦內容...</div>
+                    <div role="tabpanel" class="tab-panel" id="tab-dinner" style="display:none;">晚餐推薦內容...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 六大食物分類 (Cards Carousel) -->
+        <section id="food-cards">
+            <h2>六大食物分類</h2>
+            <div class="carousel-container">
+                <!-- 6卡片 -->
+                <div class="card"><div class="c-icon">🍎</div><h3>水果類</h3><p>每餐水果拳頭大</p><p>1份(大約1個拳頭大小)</p><p>內文節錄...</p></div>
+                <div class="card"><div class="c-icon">🥬</div><h3>蔬菜類</h3><p>菜比水果多一點</p><p>燙熟約半碗</p><p>內文節錄...</p></div>
+                <div class="card"><div class="c-icon">🍚</div><h3>全穀雜糧</h3><p>飯跟蔬菜一樣多</p><p>1碗</p><p>內文節錄...</p></div>
+                <div class="card"><div class="c-icon">🥩</div><h3>豆魚蛋肉</h3><p>豆魚蛋肉一掌心</p><p>1掌心大</p><p>內文節錄...</p></div>
+                <div class="card"><div class="c-icon">🥛</div><h3>乳品類</h3><p>每天早晚一杯奶</p><p>1杯(240ml)</p><p>內文節錄...</p></div>
+                <div class="card"><div class="c-icon">🥜</div><h3>油脂與堅果</h3><p>堅果種子一茶匙</p><p>1茶匙</p><p>內文節錄...</p></div>
+            </div>
+        </section>
+
+        <!-- 8. 健康諮詢表單 -->
+        <section id="contact">
+            <h2>健康諮詢</h2>
+            <form id="consultForm">
+                <div>
+                    <label for="fname">姓名：</label>
+                    <input type="text" id="fname" name="fname" required>
+                </div>
+                <div>
+                    <!-- 性別平等考量 -->
+                    <label for="gender">性別：</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">請選擇</option>
+                        <option value="male">男性</option>
+                        <option value="female">女性</option>
+                        <option value="nonbinary">非二元性別</option>
+                        <option value="other">其他/不願透露</option>
+                    </select>
+                </div>
+                <div>
+                    <!-- 電話驗證 09xx-xxxxxx -->
+                    <label for="phone">聯絡電話：</label>
+                    <input type="text" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{6}" title="格式: 0912-345678" required>
+                </div>
+                <div>
+                    <!-- Email 驗證 -->
+                    <label for="email">聯絡信箱：</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit">送出諮詢</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- 9. 頁尾 -->
+    <footer id="footer">
+        <div class="f-logo">
+            <img src="images/logo.png" alt="Footer Logo" onerror="this.src=''; this.alt='我的餐盤';">
+        </div>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="Line">LINE</a>
+        </div>
+        <p>&copy; 2026 健康飲食網站</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 註冊 Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(r => console.log('SW registered'));
+        }
+    </script>
+</body>
+</html>

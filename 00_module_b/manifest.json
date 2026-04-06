@@ -1,0 +1,8 @@
+{
+  "name": "Healthy Diet Site",
+  "short_name": "Diet",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50"
+}

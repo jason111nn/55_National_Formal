@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>C3 圖片比較 API</title>
+</head>
+<body>
+    <h2>C3 圖片比較 API 測試 (檔案傳遞)</h2>
+    <p>請確保 <code>images/</code> 資料夾底下有這兩張圖片。</p>
+    <form action="compare.php" method="GET">
+        Before (圖片檔名，例如 a.jpg): <input type="text" name="before" value="before.jpg" required><br><br>
+        After (圖片檔名，例如 b.jpg): <input type="text" name="after" value="after.jpg" required><br><br>
+        Position (X座標交界處): <input type="number" name="position" value="150" required><br><br>
+        <button type="submit">送出比較圖</button>
+    </form>
+    <br>
+    <a href="../index.html">返回</a>
+</body>
+</html>

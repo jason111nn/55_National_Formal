@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="https://jason111nn.github.io/icons.svg" />
+
+  <title>Jason111nn | 第 55 屆全國技能競賽 - 網頁設計實作專案 | 55 National Formal</title>
+
+  <meta name="description" content="這是 Jason111nn 的第 55 屆全國技能競賽解題紀錄。致力於 Web Development、硬體電路設計與攝影紀錄，歡迎各類技術合作與創意交流。本站實作包含 Vue 3 互動開發與 Laravel 9 系統架構。">
+  <meta name="keywords" content="Jason111nn, 全國技能競賽, 網頁設計, Vue 3, Laravel 9, PHP 8.0, 硬體電路, Photography, 55 National Formal">
+  <meta name="author" content="Jason111nn">
+  <link rel="canonical" href="https://jason111nn.github.io/55_National_Formal/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jason111nn.github.io/55_National_Formal/">
+  <meta property="og:title" content="Jason111nn | 第 55 屆全國技能競賽實作紀錄">
+  <meta property="og:description" content="Open for technical collaboration and creative exchange in Web Development, Hardware & Photography. 這是我的比賽解題紀錄與技術滴。">
+  <meta property="og:image" content="https://jason111nn.github.io/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jason111nn | 55 National Formal">
+  <meta name="twitter:description" content="歡迎各類技術開發合作與創意交流，紀錄網頁開發、硬體電路設計與攝影生活點滴。">
+  <meta name="twitter:image" content="https://jason111nn.github.io/og-image.jpg">
+
+  <meta name="theme-color" content="#1e1e2e">
+  <link rel="apple-touch-icon" href="https://jason111nn.github.io/apple-touch-icon.png">
+
+  <style>
+    :root { --bg: #1e1e2e; --card: rgba(30, 30, 46, 0.8); --text: #cdd6f4; --accent: #cba6f7; --github: #f5f5f5; }
+    body { background: linear-gradient(135deg, #1e1e2e 0%, #11111b 100%); color: var(--text); font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow-x: hidden; }
+    
+    /* GitHub Corner */
+    .github-corner {
+        position: absolute; top: 1.5rem; right: 1.5rem; z-index: 100;
+        color: var(--accent); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .github-corner:hover { transform: scale(1.15) rotate(5deg); }
+    .github-corner svg { width: 45px; height: 45px; fill: currentColor; }
+    
+    .glass-card { background: var(--card); backdrop-filter: blur(12px); border: 1px solid rgba(203, 166, 247, 0.2); padding: 3rem; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); text-align: center; max-width: 650px; width: 90%; position: relative; }
+    h1 { color: var(--accent); font-size: 2rem; margin-bottom: 0.5rem; text-shadow: 0 0 10px rgba(203, 166, 247, 0.3); }
+    .subtitle { opacity: 0.8; font-size: 0.9rem; margin-bottom: 2rem; }
+    
+    .links { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1rem; }
+    .btn { padding: 12px; border-radius: 12px; background: rgba(203, 166, 247, 0.05); border: 1px solid rgba(203, 166, 247, 0.3); color: var(--text); text-decoration: none; transition: 0.3s; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn:hover { background: rgba(203, 166, 247, 0.15); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    
+    .btn-primary { grid-column: span 2; background: rgba(203, 166, 247, 0.2); border: 1px solid var(--accent); color: var(--accent); font-weight: bold; font-size: 1rem; margin-bottom: 1rem; }
+    .btn-primary:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px var(--accent); }
+    
+    footer { margin-top: 2.5rem; font-size: 0.75rem; opacity: 0.5; line-height: 1.6; }
+    .footer-link { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+    .footer-link:hover { border-bottom: 1px solid var(--accent); }
+
+    @media (max-width: 500px) { 
+        .links { grid-template-columns: 1fr; } 
+        .btn-primary { grid-column: span 1; } 
+        .github-corner { top: 1rem; right: 1rem; }
+        .github-corner svg { width: 32px; height: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+    <a href="https://github.com/Jason111nn/55_National_Formal" class="github-corner" aria-label="View source on GitHub" target="_blank">
+        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <g id="github_00000178918564504449926280000008731996709616696990_">
+            <path d="M0 .011h48v48H0v-48z" fill="none"/>
+            <path d="M30 44.004v-10c0-.884-.197-1.722-.542-2.479.825-.167 1.65-.358 2.472-.601 2.527-.746 6.154-3.839 7.226-6.863 1.188-3.356 1.188-6.76 0-10.116l-.001-.001c-.213-.603-.537-1.211-.998-1.868.848-3.154.253-5.792.225-5.915l-.365-1.564-1.606.019c-.15.002-3.48.063-6.724 1.955a29.635 29.635 0 0 0-11.371 0c-3.243-1.892-6.573-1.953-6.724-1.955l-1.608-.019-.365 1.564c-.028.123-.623 2.761.225 5.915-.461.657-.785 1.266-.999 1.869-1.187 3.356-1.187 6.76.001 10.117 1.07 3.023 4.697 6.116 7.225 6.862.822.243 1.647.434 2.472.601A5.946 5.946 0 0 0 18 34.004v1.281c-.062.036-.127.065-.187.108-.289.211-2.869 1.967-5.505.09-.93-.946-1.386-1.639-1.826-2.309-.988-1.5-1.841-2.586-4.588-3.96a2 2 0 1 0-1.789 3.579c1.991.995 2.341 1.525 3.035 2.581.515.781 1.155 1.754 2.445 3.044l.215.186c1.692 1.27 3.447 1.723 5.053 1.723A9.286 9.286 0 0 0 18 39.76v4.253l12-.009z"/>
+        </g>
+        </svg>
+
+    </a>
+
+  <div class="glass-card">
+    <h1>Jason111nn</h1>
+    <p class="subtitle">第 55 屆全國技能競賽 - 網頁設計實作專案 Portal</p>
+    
+    <div class="links">
+        <a href="https://github.com/Jason111nn/55_National_Formal" class="btn btn-primary" target="_blank">
+          <svg height="20" viewBox="0 0 16 16" width="20" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+          View Source on GitHub
+        </a>
+
+        <a href="./00_module_a/index.html" class="btn">Module A: Speed Test</a>
+        <a href="./00_module_b/index.html" class="btn">Module B: Vanilla JS</a>
+        <a href="./00_module_b_vue/dist/index.html" class="btn">Module B: Vue 3 + PWA</a>
+        <a href="./00_module_c/index.php" class="btn">Module C: Article CMS</a>
+        <a href="./00_module_d/index.php" class="btn">Module D: Vanilla PHP</a>
+        <a href="./00_module_d_laravel/public/" class="btn">Module D: Laravel 9 API</a>
+        <a href="./00_module_e/p01/" class="btn" style="grid-column: span 2;">Module E: Algorithms (PHP CLI)</a>
+    </div>
+
+    <footer>
+      Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="footer-link" target="_blank">CC BY-NC-ND 4.0</a><br>
+      Developed by <a href="https://jason111nn.github.io/" class="footer-link">jason111nn</a> | 2026
+    </footer>
+  </div>
+</body>
+</html>

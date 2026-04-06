@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Heavy HTML Page</title>
+    <style>
+        body { margin: 0; font-family: sans-serif; background: #fafafa; }
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #222; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+        }
+        
+        .spinner {
+            width: 80px; height: 80px;
+            background-color: pink;
+            border-radius: 50%;
+            animation: spinnerBounce 2.5s infinite ease-in-out, spinnerColors 2.5s infinite step-end;
+        }
+
+        /* 翻頁動畫：向右翻、向上翻、向左翻、向下翻 (Perspective 3D 旋轉) */
+        @keyframes spinnerBounce {
+            0% { transform: perspective(200px) rotateX(0deg) rotateY(0deg); }
+            25% { transform: perspective(200px) rotateX(0deg) rotateY(180deg); } /* Right/Left */
+            50% { transform: perspective(200px) rotateX(-180deg) rotateY(180deg); } /* Up */
+            75% { transform: perspective(200px) rotateX(-180deg) rotateY(360deg); } /* Left/Right */
+            100% { transform: perspective(200px) rotateX(0deg) rotateY(360deg); } /* Down */
+        }
+        
+        /* 依序切換顏色：粉紅, 綠色, 藍色, 黃色 */
+        @keyframes spinnerColors {
+            0% { background-color: pink; }
+            25% { background-color: green; }
+            50% { background-color: blue; }
+            75% { background-color: yellow; }
+            100% { background-color: pink; }
+        }
+        
+        /* 頁面組件 */
+        header, footer {
+            background: #111; color: white; padding: 20px; text-align: center;
+            width: 100%; box-sizing: border-box;
+        }
+        section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid #ddd; }
+        .img-block { display: inline-flex; justify-content: center; align-items: center; background: #ccc; margin-right: 10px; color: #333; font-weight: bold;}
+        .videos { display: flex; gap: 20px; flex-wrap: wrap;}
+        .video-card { background: #eee; padding: 10px; border-radius: 8px;}
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="spinner"></div></div>
+
+    <div id="content" style="display:none;">
+        <header>
+            <h1>Heavy HTML Page</h1>
+        </header>
+
+        <section>
+            <h2>Large Text Content</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit.</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+            <p>Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.</p>
+        </section>
+
+        <section>
+            <h2>Images</h2>
+            <div class="img-block" style="width:300px; height:300px;">300 x 300</div>
+            <div class="img-block" style="width:600px; height:600px;">600 x 600</div>
+            <div class="img-block" style="width:900px; height:900px;">900 x 900</div>
+        </section>
+
+        <section>
+            <h2>Videos</h2>
+            <div class="videos">
+                <div class="video-card">
+                    <video width="320" height="240" controls><source src="video/video1.mp4" type="video/mp4"></video>
+                </div>
+                <div class="video-card">
+                    <video width="320" height="240" controls><source src="video/video2.mp4" type="video/mp4"></video>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Forms</h2>
+            <form onSubmit="event.preventDefault(); alert('Submitted!');">
+                <label>Name: <input type="text" name="name" required></label><br><br>
+                <label>Email: <input type="email" name="email" required></label><br><br>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Dynamic Content</h2>
+            <button id="add-btn">Add Dynamic Content</button>
+            <div id="dynamic-area" style="margin-top: 10px; border: 1px dashed #ccc; padding: 10px;"></div>
+        </section>
+
+        <footer>
+            <h2>Footer Content Here</h2>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            // 利用 setTimeout 模擬更長的載入時間以便在一般模式下也能看見，
+            // 由於競賽要求在 Slow 3G 測試，因此也能夠真正呈現加載期的動畫。
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }, 1000); 
+        });
+
+        document.getElementById('add-btn').addEventListener('click', () => {
+            let el = document.createElement('div');
+            el.innerText = 'New Dynamic Text Blocks added! ' + new Date().toLocaleTimeString();
+            el.style.background = '#e1f5fe';
+            el.style.padding = '5px';
+            el.style.marginTop = '5px';
+            document.getElementById('dynamic-area').appendChild(el);
+        });
+    </script>
+</body>
+</html>

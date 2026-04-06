@@ -1,0 +1,15 @@
+---
+title: Welcome to Nangan Exhibition
+tags: exhibition, official, 2025
+summary: A quick introduction to the official Nangan Expo.
+author: Admin
+featured: true
+---
+Welcome to Nangan Exhibition!
+This is a simple text describing the details.
+[quote]
+We look forward to seeing you.
+Bring your friends!
+[/quote]
+example-cover.jpg
+See the beautiful picture above.

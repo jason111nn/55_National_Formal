@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>A2 滴水效果 (純 CSS)</title>
+    <style>
+        body { 
+            display: flex; justify-content: center; align-items: flex-start; 
+            height: 100vh; padding-top: 50px; margin: 0; background-color: #2c3e50; 
+        }
+        
+        .container { position: relative; width: 100px; height: 350px; }
+        
+        /* 實心白圓水滴 */
+        .drop {
+            width: 30px; height: 30px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute; left: 35px; top: 0;
+            animation: fall 2s infinite ease-in;
+        }
+
+        /* 橢圓形白框漣漪 */
+        .ripple {
+            width: 80px; height: 30px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            position: absolute; left: 10px; bottom: 0;
+            opacity: 0;
+            transform: scale(0.3);
+            animation: rippleEffect 2s infinite ease-out;
+        }
+
+        /* 第一階段與第二階段水滴落下 */
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            70% { transform: translateY(300px); opacity: 1; }
+            /* 觸底後消失 */
+            71%, 100% { transform: translateY(300px); opacity: 0; }
+        }
+
+        /* 第三階段漣漪散開 */
+        @keyframes rippleEffect {
+            0%, 70% { transform: scale(0.3); opacity: 0; } /* 水滴落下來前先隱藏 */
+            71% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; } /* 放大的同時透明度歸零 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="drop"></div>
+        <div class="ripple"></div>
+    </div>
+</body>
+</html>

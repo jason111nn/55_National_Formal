@@ -1,0 +1,47 @@
+# ----------------------------------------------------------------------
+# Node.js  dependencies
+# ----------------------------------------------------------------------
+node_modules/
+npm-debug.log
+yarn-error.log
+/00_module_b_vue/node_modules/
+
+# ----------------------------------------------------------------------
+# PHP / Laravel dependencies & private files
+# ----------------------------------------------------------------------
+/00_module_d_laravel/vendor/
+/00_module_d_laravel/.env
+/00_module_d_laravel/.env.backup
+/00_module_d_laravel/.phpunit.result.cache
+/00_module_d_laravel/storage/*.key
+/00_module_d_laravel/public/hot
+/00_module_d_laravel/public/storage
+/00_module_d_laravel/storage/framework/cache/data/*
+/00_module_d_laravel/storage/framework/sessions/*
+/00_module_d_laravel/storage/framework/testing/*
+/00_module_d_laravel/storage/framework/views/*
+/00_module_d_laravel/storage/logs/*
+
+# ----------------------------------------------------------------------
+# Vue 3 / Vite Build Output
+# ----------------------------------------------------------------------
+/00_module_b_vue/dist/
+/00_module_b_vue/dist-ssr/
+*.local
+
+# ----------------------------------------------------------------------
+# OS / IDE Configurations
+# ----------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ----------------------------------------------------------------------
+# Documentation & Reports (Do Not Upload)
+# ----------------------------------------------------------------------
+Rubric.md
+FINAL_AUDIT_REPORT.md
+Item.md

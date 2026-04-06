@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>B3 繪製星星</title>
+</head>
+<body>
+    <h2>動態繪製星星</h2>
+    迭代次數 (星星數量): <input type="number" id="count" value="5" min="1">
+    <button onclick="drawStars()">繪製</button>
+    <br><br>
+    <canvas id="canvas" width="800" height="400" style="border:1px solid #ccc;"></canvas>
+    <br>
+    <a href="../index.html">返回</a>
+
+    <script>
+        function drawStars() {
+            const n = parseInt(document.getElementById('count').value) || 5;
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // clear previous
+
+            let cx = canvas.width / 2;
+            let cy = canvas.height / 2;
+            let radius = 150;
+            
+            // 計算星芒跳躍跨度，傳統 5芒星為跨2點 
+            let step = Math.floor((n - 1) / 2);
+            if (step < 2) step = 2; // 至少要跳過一點才有星形交叉
+
+            ctx.beginPath();
+            for (let i = 0; i <= n; i++) {
+                // 將圓周 360 等分為 n，並依照 step 跨度取點 (減去 PI/2 讓第一點在正上方)
+                let angle = Math.PI * 2 * (i * step) / n - Math.PI / 2;
+                let x = cx + Math.cos(angle) * radius;
+                let y = cy + Math.sin(angle) * radius;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            // 僅保留線條邊框，不進行填充
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # 不攔截實際存在的檔案(如圖片)或目錄
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # 全部導向至 index.php 做路由解析
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
