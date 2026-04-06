@@ -2,6 +2,9 @@
 
 # 第 55 屆全國技能競賽 - 網頁設計實作專案
 
+</div>
+
+<div align="center">
 <a href="https://jason111nn.github.io/">
   <img src="https://img.shields.io/badge/VISIT%20MY%20BLOG-0d1117?style=for-the-badge&logo=vuedotjs&logoColor=white" />
 </a>
@@ -9,7 +12,9 @@
   <img src="https://img.shields.io/badge/VIEW%20LIVE%20DEMO-8A2BE2?style=for-the-badge&logo=github&logoColor=white" />
 </a>
 
+</div>
 
+<div align="center">
 這是一份針對 **第 55 屆全國技能競賽（Web Design）** 的實作專案。<br>為確保環境絕對穩定，專案採用 **「雙軌並行 (Dual-Track)」** 開發模式：<br>提供保底的原生 (Vanilla) 實作，以及現代化框架 (Laravel/Vue) 的重構版本。
 
 </div>
@@ -52,7 +57,7 @@
 
 3.  **測試資料匯入**：若需預設測資，請匯入根目錄下的 `55_nationa.sql`。
 
-### 3\. 模組啟動
+### 3. 模組啟動
 
   * **Vue 互動端**：進入 `00_module_b_vue` 執行 `npm run dev`。
   * **Laravel 管理端**：執行 `php artisan serve` 存取 `/01/{isbn}`。
